@@ -29,6 +29,7 @@ public class SimpleController_UsingActions : MonoBehaviour
         fireAction.performed +=
             ctx =>
         {
+            Debug.Log("Fire!performed");
             if (ctx.interaction is SlowTapInteraction)
             {
                 StartCoroutine(BurstFire((int)(ctx.duration * burstSpeed)));
@@ -42,12 +43,14 @@ public class SimpleController_UsingActions : MonoBehaviour
         fireAction.started +=
             ctx =>
         {
+            Debug.Log("Fire!started");
             if (ctx.interaction is SlowTapInteraction)
                 m_Charging = true;
         };
         fireAction.cancelled +=
             ctx =>
         {
+            Debug.Log("Fire!cancelled");
             m_Charging = false;
         };
     }
